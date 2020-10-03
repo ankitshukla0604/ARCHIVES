@@ -1,0 +1,76 @@
+// BY AYUSH KUMAR SHUKLA
+#include <bits/stdc++.h>
+using namespace std;
+#define  ll long long int
+#define inf std::numeric_limits<double>::infinity()
+#define DECI(n) fixed<<showpoint<<setprecision(n)
+#define MOD 1000000007LL
+#define FOR(i,start,end) for(int i=start;i<end;i++)
+#define FORR(i,end,start) for(int i=end-1;i>=start;i--)
+#define INPUT(arr,n) FOR(i,0,n)cin>>arr[i];
+#define INPUT2d(arr,n,k) FOR(i,0,n)FOR(j,0,k)cin>>arr[i][j];
+#define SIZE 100005
+#define MAX(a,b) ((a)>(b)?(a):(b))
+#define MIN(a,b) ((a)<(b)?(a):(b))
+#define pb(n) push_back(n)
+#define fi first
+#define si second
+
+main(){
+    ll t;
+    cin>>t;
+    while(t--)
+    {   
+    	ll n;
+    	cin>>n;
+    	string s;
+    	cin>>s;
+
+    	ll f = 1;
+    	for(ll i=0;i<n-1;i++){
+    		if(s[i]!=s[i+1])
+    			f=0;
+       	}
+       	if(f){
+       		if(n%3!=0){
+       			cout<<(n/3)+1<<"\n";
+       		}
+       		else cout<<n/3<<"\n";
+       		continue;
+       	}
+
+       	ll i = 0,j = n-1;
+    	ll cnt1 = 2;
+    	if(s[0]==s[n-1]){
+    		for(i=1;i<n;i++){
+    			if(s[i]==s[i-1]){
+    				cnt1++;
+    			}
+    			else break;
+    		}
+    		for(j=n-1;j>0;j--){
+    			if(s[j]==s[j-1]){
+    				cnt1++;
+    			}
+    			else break;
+    		}
+    	}
+    	i+=1;
+    	ll cnt = 1;
+    	ll ans = 0;
+    	for(;i<=j;){
+    		if(s[i]==s[i-1]){
+    			cnt++;
+    			i++;
+    		}
+    		else{
+    			ans+=(cnt/3);
+    			cnt = 1;
+    			i++;
+    		}
+    	}
+    	ans+=(cnt/3);
+    	ans+=(cnt1/3);
+    	cout<<ans<<"\n";
+    }
+}
